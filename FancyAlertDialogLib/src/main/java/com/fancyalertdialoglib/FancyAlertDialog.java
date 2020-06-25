@@ -7,9 +7,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 
 public class FancyAlertDialog {
 
@@ -20,7 +22,7 @@ public class FancyAlertDialog {
     private Animation animation;
     private FancyAlertDialogListener pListener, nListener;
     private int pBtnColor, nBtnColor, buttonColors, bgColor;
-    private boolean cancel;
+    private boolean cancel, hideHeader, hideNegativeButton;
 
 
     private FancyAlertDialog(Builder builder) {
@@ -39,6 +41,8 @@ public class FancyAlertDialog {
         this.nBtnColor = builder.nBtnColor;
         this.bgColor = builder.bgColor;
         this.cancel = builder.cancel;
+        this.hideHeader = builder.hideHeader;
+        this.hideNegativeButton = builder.hideNegativeButton;
     }
 
 
@@ -50,7 +54,7 @@ public class FancyAlertDialog {
         private Animation animation;
         private FancyAlertDialogListener pListener, nListener;
         private int pBtnColor, nBtnColor, bgColor, buttonTextColors;
-        private boolean cancel;
+        private boolean cancel, hideHeader, hideNegativeButton;
 
         public Builder(Activity activity) {
             this.activity = activity;
@@ -61,7 +65,7 @@ public class FancyAlertDialog {
             return this;
         }
 
-        public Builder setBackgroundColor(int bgColor) {
+        public Builder setHeaderBackgroundColor(int bgColor) {
             this.bgColor = bgColor;
             return this;
         }
@@ -88,6 +92,16 @@ public class FancyAlertDialog {
 
         public Builder setNegativeBtnText(String negativeBtnText) {
             this.negativeBtnText = negativeBtnText;
+            return this;
+        }
+
+        public Builder setHideHeader(boolean hideHeader) {
+            this.hideHeader = hideHeader;
+            return this;
+        }
+
+        public Builder setHideNegativeButton(boolean hideNegativeButton) {
+            this.hideNegativeButton = hideNegativeButton;
             return this;
         }
 
@@ -129,7 +143,8 @@ public class FancyAlertDialog {
         public FancyAlertDialog build() {
             TextView message1, title1;
             ImageView iconImg;
-            Button nBtn, pBtn;
+            RelativeLayout headerLayout;
+            MaterialButton nBtn, pBtn;
             View view;
             final Dialog dialog;
             if (animation == Animation.POP)
@@ -146,30 +161,35 @@ public class FancyAlertDialog {
             dialog.setContentView(R.layout.fancyalertdialog);
 
             //getting resources
+            headerLayout = dialog.findViewById(R.id.headerLayout);
             view = (View) dialog.findViewById(R.id.background);
             title1 = (TextView) dialog.findViewById(R.id.title);
             message1 = (TextView) dialog.findViewById(R.id.message);
             iconImg = (ImageView) dialog.findViewById(R.id.icon);
-            nBtn = (Button) dialog.findViewById(R.id.negativeBtn);
-            pBtn = (Button) dialog.findViewById(R.id.positiveBtn);
+            nBtn = dialog.findViewById(R.id.negativeBtn);
+            pBtn = dialog.findViewById(R.id.positiveBtn);
             title1.setText(title);
             message1.setText(message);
+            if (hideNegativeButton) {
+                nBtn.setVisibility(View.GONE);
+            } else {
+                nBtn.setVisibility(View.VISIBLE);
+            }
+            if (hideHeader) {
+                headerLayout.setVisibility(View.GONE);
+            } else {
+                headerLayout.setVisibility(View.VISIBLE);
+            }
             if (positiveBtnText != null)
                 pBtn.setText(positiveBtnText);
             if (pBtnColor != 0) {
-                /*GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
-                bgShape.setColor(pBtnColor);*/
                 nBtn.setBackgroundColor(pBtnColor);
             }
             if (buttonTextColors != 0) {
-                /*GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
-                bgShape.setColor(pBtnColor);*/
                 nBtn.setTextColor(buttonTextColors);
                 pBtn.setTextColor(buttonTextColors);
             }
             if (nBtnColor != 0) {
-                /*GradientDrawable bgShape = (GradientDrawable) nBtn.getBackground();
-                bgShape.setColor(nBtnColor);*/
                 pBtn.setBackgroundColor(nBtnColor);
             }
             if (negativeBtnText != null)
@@ -200,7 +220,11 @@ public class FancyAlertDialog {
             }
 
             if (nListener != null) {
-                nBtn.setVisibility(View.VISIBLE);
+                if (hideNegativeButton) {
+                    nBtn.setVisibility(View.GONE);
+                } else {
+                    nBtn.setVisibility(View.VISIBLE);
+                }
                 nBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
