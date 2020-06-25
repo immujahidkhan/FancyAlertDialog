@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -151,12 +152,12 @@ public class FancyAlertDialog {
             if (positiveBtnText != null)
                 pBtn.setText(positiveBtnText);
             if (pBtnColor != 0) {
-                /*GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
-                bgShape.setColor(pBtnColor);*/
+                GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
+                bgShape.setColor(pBtnColor);
             }
             if (nBtnColor != 0) {
-                /*GradientDrawable bgShape = (GradientDrawable) nBtn.getBackground();
-                bgShape.setColor(nBtnColor);*/
+                GradientDrawable bgShape = (GradientDrawable) nBtn.getBackground();
+                bgShape.setColor(nBtnColor);
             }
             if (negativeBtnText != null)
                 nBtn.setText(negativeBtnText);
