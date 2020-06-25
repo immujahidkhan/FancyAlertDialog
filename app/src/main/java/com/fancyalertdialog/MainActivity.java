@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new FancyAlertDialog.Builder(this)
-                .setTitle("Rate us if you like the app")
-                .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
-                .setMessage("Do you really want to Exit ?")
+                .setTitle("Remove Photo")
+                .setBackgroundColor(getResources().getColor(R.color.colorAccent))
+                .setMessage("Are you sure you want to delete?")
                 .setNegativeBtnText("Cancel")
-                .setBtnTextColor(Color.parseColor("#FFFFFF"))
-                .setPositiveBtnBackground(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
-                .setPositiveBtnText("Rate")
-                .setNegativeBtnBackground(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
+                .setBtnTextColor(getResources().getColor(R.color.colorPrimaryDark))
+                .setPositiveBtnBackground(getResources().getColor(R.color.colorAccent))
+                .setPositiveBtnText("Delete")
+                .setNegativeBtnBackground(getResources().getColor(R.color.colorAccent))
                 .setAnimation(Animation.POP)
                 .isCancellable(true)
                 .setIcon(R.drawable.ic_attention, Icon.Visible)
