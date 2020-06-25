@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -20,7 +19,7 @@ public class FancyAlertDialog {
     private Icon visibility;
     private Animation animation;
     private FancyAlertDialogListener pListener, nListener;
-    private int pBtnColor, nBtnColor, bgColor;
+    private int pBtnColor, nBtnColor, buttonColors, bgColor;
     private boolean cancel;
 
 
@@ -35,6 +34,7 @@ public class FancyAlertDialog {
         this.nListener = builder.nListener;
         this.positiveBtnText = builder.positiveBtnText;
         this.negativeBtnText = builder.negativeBtnText;
+        this.buttonColors = builder.buttonTextColors;
         this.pBtnColor = builder.pBtnColor;
         this.nBtnColor = builder.nBtnColor;
         this.bgColor = builder.bgColor;
@@ -49,7 +49,7 @@ public class FancyAlertDialog {
         private Icon visibility;
         private Animation animation;
         private FancyAlertDialogListener pListener, nListener;
-        private int pBtnColor, nBtnColor, bgColor;
+        private int pBtnColor, nBtnColor, bgColor, buttonTextColors;
         private boolean cancel;
 
         public Builder(Activity activity) {
@@ -78,6 +78,11 @@ public class FancyAlertDialog {
 
         public Builder setPositiveBtnBackground(int pBtnColor) {
             this.pBtnColor = pBtnColor;
+            return this;
+        }
+
+        public Builder setBtnTextColor(int btnColor) {
+            this.buttonTextColors = btnColor;
             return this;
         }
 
@@ -152,12 +157,20 @@ public class FancyAlertDialog {
             if (positiveBtnText != null)
                 pBtn.setText(positiveBtnText);
             if (pBtnColor != 0) {
-                GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
-                bgShape.setColor(pBtnColor);
+                /*GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
+                bgShape.setColor(pBtnColor);*/
+                nBtn.setBackgroundColor(pBtnColor);
+            }
+            if (buttonTextColors != 0) {
+                /*GradientDrawable bgShape = (GradientDrawable) pBtn.getBackground();
+                bgShape.setColor(pBtnColor);*/
+                nBtn.setTextColor(buttonTextColors);
+                pBtn.setTextColor(buttonTextColors);
             }
             if (nBtnColor != 0) {
-                GradientDrawable bgShape = (GradientDrawable) nBtn.getBackground();
-                bgShape.setColor(nBtnColor);
+                /*GradientDrawable bgShape = (GradientDrawable) nBtn.getBackground();
+                bgShape.setColor(nBtnColor);*/
+                pBtn.setBackgroundColor(nBtnColor);
             }
             if (negativeBtnText != null)
                 nBtn.setText(negativeBtnText);

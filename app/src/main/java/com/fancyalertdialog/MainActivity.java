@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
                 .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
                 .setMessage("Do you really want to Exit ?")
                 .setNegativeBtnText("Cancel")
-                .setPositiveBtnBackground(Color.parseColor("#FF4081"))  //Don't pass R.color.colorvalue
+                .setBtnTextColor(Color.parseColor("#FFFFFF"))
+                .setPositiveBtnBackground(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
                 .setPositiveBtnText("Rate")
-                .setNegativeBtnBackground(Color.parseColor("#FFA9A7A8"))  //Don't pass R.color.colorvalue
+                .setNegativeBtnBackground(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
                 .setAnimation(Animation.POP)
                 .isCancellable(true)
                 .setIcon(R.drawable.ic_attention, Icon.Visible)
