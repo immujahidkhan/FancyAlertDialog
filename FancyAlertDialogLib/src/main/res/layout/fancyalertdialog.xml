@@ -72,6 +72,7 @@
                     android:layout_below="@+id/title"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
+                    android:justificationMode="inter_word"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:text="Do you really want to Exit ?"
