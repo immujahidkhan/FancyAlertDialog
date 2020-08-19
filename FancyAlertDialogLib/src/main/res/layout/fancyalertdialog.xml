@@ -91,42 +91,30 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/negativeBtn"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimaryDark"
-                        android:padding="10dp"
-                        android:text="Cancel"
-                        android:textAllCaps="false"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/colorAccent"
+                        android:text="@string/app_name"
+                        android:textSize="14sp"
                         app:cornerRadius="25dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/positiveBtn"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimaryDark"
-                        android:padding="10dp"
-                        android:text="Okay"
-                        android:textAllCaps="false"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/colorAccent"
+                        android:text="@string/app_name"
+                        android:textSize="14sp"
                         app:cornerRadius="25dp" />
                 </LinearLayout>
             </RelativeLayout>
